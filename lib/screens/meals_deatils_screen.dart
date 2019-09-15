@@ -11,6 +11,8 @@ class MealsDeatilsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(arus),),
+
+
     );
   }
 }
