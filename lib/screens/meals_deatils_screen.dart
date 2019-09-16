@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import '../dummy_data.dart.dart';
 
 class MealsDeatilsScreen extends StatelessWidget {
+
   static const MealDEailsRout = './MealsDeatilsScreen';
 
   Widget buildText(BuildContext context, String text) {
@@ -29,10 +30,16 @@ class MealsDeatilsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final arus = ModalRoute.of(context).settings.arguments as String;
-    final getDeatils = DUMMY_MEALS.firstWhere((meals) => meals.id == arus);
+    final mealId = ModalRoute.of(context).settings.arguments as String;
+    final getDeatils = DUMMY_MEALS.firstWhere((meals) => meals.id == mealId);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: (){
+          Navigator.of(context).pop(mealId);
+        },
+      ),
         appBar: AppBar(
           title: Text(getDeatils.title),
         ),

@@ -13,6 +13,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function deleteItem;
 
   MealItem(
   {
@@ -22,6 +23,7 @@ class MealItem extends StatelessWidget {
     @required this.duration,
     @required this.complexity,
     @required this.affordability,
+    @required this.deleteItem
  }
 );
 
@@ -65,7 +67,9 @@ class MealItem extends StatelessWidget {
 
   void itemDeatils(BuildContext context){
       Navigator.of(context).pushNamed(MealsDeatilsScreen.MealDEailsRout,
-          arguments: id);
+          arguments: id).then((result){
+            deleteItem(result);
+      });
 
   }
 
