@@ -102,24 +102,24 @@ class MealItem extends StatelessWidget {
             ),
             Row(
               children: <Widget>[
-                Padding(padding: EdgeInsets.all(8),
+                Padding(padding: EdgeInsets.all(6),
                   child: Row(children: <Widget>[
                     Icon(Icons.timer),
                     SizedBox(width: 5,),
                     Text("$duration min")
                   ],),
                 ),
-                Padding(padding: EdgeInsets.all(8),
+                Padding(padding: EdgeInsets.all(6),
                   child: Row(children: <Widget>[
                     Icon(Icons.work),
                     SizedBox(width: 5,),
                     Text("$complextiyText")
                   ],),
-                ), Padding(padding: EdgeInsets.all(8),
+                ), Padding(padding: EdgeInsets.all(6),
                   child: Row(children: <Widget>[
                     Icon(Icons.attach_money),
                     SizedBox(width: 5,),
-                    Text("$affordabilityText")
+                     Text("$affordabilityText")
                   ],),
                 )
               ],

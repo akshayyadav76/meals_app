@@ -6,9 +6,9 @@ import '../widgtes/category_item.dart';
 class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Meals App"),centerTitle: true,),
-      body: GridView(
+    return
+      //appBar: AppBar(title: Text("Meals App"),centerTitle: true,),
+       GridView(
         padding: const EdgeInsets.all(15),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent:  MediaQuery.of(context).size.width *0.5,
@@ -20,7 +20,7 @@ class CategoryScreen extends StatelessWidget {
           return CategoryItem(data.id,data.title,data.color);
         }).toList(),
 
-      ),
+
     );
   }
 }
