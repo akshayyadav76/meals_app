@@ -27,6 +27,24 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> FilteredList =DUMMY_MEALS;
+  List<Meal> favorites =[];
+
+  void toggleFavorits(String meaId){
+   final exitingIndex =favorites.indexWhere((meal)=> meal.id ==meaId);
+   if(exitingIndex >0){
+     setState(() {
+       favorites.removeAt(exitingIndex);
+     });
+   }else{
+     setState(() {
+       favorites.add(DUMMY_MEALS.firstWhere((meal)=>meal.id == meaId));
+     });
+   }
+  }
+
+  bool isMealFavorites(String id){
+    return favorites.any((meal)=> meal.id== id);
+  }
 
   void setFilters(Map<String,bool>filster){
    setState(() {
@@ -46,7 +64,7 @@ class _MyAppState extends State<MyApp> {
          return false;
        }
        return true;
-     });
+     }).toList();
    });
 
   }
@@ -71,12 +89,10 @@ class _MyAppState extends State<MyApp> {
       //home: CategoryScreen(),
       initialRoute: '/',
       routes: {
-        '/':(context)=>TabScreen(),
-        CategoryMealsScreen.categoryMealsScreen_Route: (context){return CategoryMealsScreen(FilteredList);},
-        MealsDeatilsScreen.MealDEailsRout: (context)=> MealsDeatilsScreen(),
-        FiltersScreen.filterRoute:(context)=>FiltersScreen(setFilters),
-
-
+        '/':(context)=>TabScreen(favorites),
+        CategoryMealsScreen.categoryMealsScreen_Route: (context){ return CategoryMealsScreen(FilteredList);},
+        MealsDeatilsScreen.MealDEailsRout: (context)=> MealsDeatilsScreen(toggleFavorits,isMealFavorites),
+        FiltersScreen.filterRoute:(context)=>FiltersScreen(setFilters,_filters),
       },
     );
   }

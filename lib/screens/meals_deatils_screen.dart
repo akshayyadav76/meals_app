@@ -5,6 +5,11 @@ import '../dummy_data.dart.dart';
 
 class MealsDeatilsScreen extends StatelessWidget {
 
+  final Function taggleFavrotes;
+  final Function isFavorit;
+
+  MealsDeatilsScreen(this.taggleFavrotes,this.isFavorit);
+
   static const MealDEailsRout = './MealsDeatilsScreen';
 
   Widget buildText(BuildContext context, String text) {
@@ -35,10 +40,8 @@ class MealsDeatilsScreen extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
-        onPressed: (){
-          Navigator.of(context).pop(mealId);
-        },
+        child:  Icon(isFavorit(mealId)?Icons.star:Icons.star_border),
+        onPressed:()=>taggleFavrotes(mealId),
       ),
         appBar: AppBar(
           title: Text(getDeatils.title),
